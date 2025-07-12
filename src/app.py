@@ -43,10 +43,10 @@ def log_result(source, label, confidence):
 # ------------------ STREAMLIT UI ------------------
 
 st.set_page_config(page_title="Visual Quality Check", layout="centered")
-st.title("📦 Visual Quality Check System")
+st.title("\U0001F4E6 Visual Quality Check System")
 st.caption("Use webcam or upload an image to classify product quality.")
 
-tab1, tab2 = st.tabs(["📤 Upload Image", "📸 Webcam Capture"])
+tab1, tab2 = st.tabs(["\U0001F4E4 Upload Image", "\U0001F4F8 Webcam Capture"])
 
 # --- Upload Image ---
 with tab1:
@@ -71,11 +71,11 @@ with tab1:
         st.progress(confidence)
         st.metric("Confidence Score", f"{confidence:.2f}")
 
-        if st.button("📄 Log Result"):
+        if st.button("\U0001F4C4 Log Result"):
             log_result("Uploaded Image", label, confidence)
             st.info("Result logged to CSV.")
 
-        if st.button("🔄 Try Another Image"):
+        if st.button("\U0001F504 Try Another Image"):
             st.session_state.upload_mode = "start"
             st.session_state.uploaded_file = None
 
@@ -101,10 +101,10 @@ with tab2:
         st.progress(confidence)
         st.metric("Confidence Score", f"{confidence:.2f}")
 
-        if st.button("📄 Log Result (Webcam)"):
+        if st.button("\U0001F4C4 Log Result (Webcam)"):
             log_result("Webcam", label, confidence)
             st.info("Result logged to CSV.")
 
-        if st.button("🔁 Recapture Image"):
+        if st.button("\U0001F501 Recapture Image"):
             st.session_state.webcam_mode = "start"
             st.session_state.webcam_picture = None
