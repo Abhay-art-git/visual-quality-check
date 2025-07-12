@@ -1,4 +1,5 @@
 import streamlit as st
+import tensorflow as tf
 import cv2
 import numpy as np
 import pandas as pd
@@ -6,12 +7,22 @@ from PIL import Image
 from datetime import datetime
 from tensorflow.keras.models import load_model
 
-# Load the model once
-@st.cache_resource
-def load_my_model():
-    return load_model("../saved_model/visual_check.h5")
 
-model = load_my_model()
+# Load the model once
+from urllib.request import urlopen
+import tempfile
+
+@st.cache_resource
+def load_model_from_drive():
+    file_id = "PASTE_YOUR_FILE_ID_HERE"  # 👈 Replace with your Google Drive ID
+    file_url = f"https://drive.google.com/uc?export=download&id={file_id}"
+
+    with urlopen(file_url) as response:
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
+            tmp_file.write(response.read())
+            return tf.keras.models.load_model(tmp_file.name)
+
+model = load_model_from_drive()
 
 # Preprocess image
 def preprocess_image(image):
