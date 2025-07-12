@@ -14,7 +14,7 @@ import tempfile
 
 @st.cache_resource
 def load_model_from_drive():
-    file_id = "PASTE_YOUR_FILE_ID_HERE"  # 👈 Replace with your Google Drive ID
+    file_id = "1yXUpk5GOi1JZnA_6lotHAN0zWdgL2Goj"  # 👈 Replace with your Google Drive ID
     file_url = f"https://drive.google.com/uc?export=download&id={file_id}"
 
     with urlopen(file_url) as response:
