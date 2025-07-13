@@ -1,7 +1,6 @@
-streamlit
-numpy
-pandas
-pillow
-tensorflow==2.9.1
-tflite-runtime
-
+streamlit==1.34.0
+pillow==9.5.0
+numpy==1.23.5
+pandas==1.5.3
+opencv-python-headless==4.7.0.72
+tflite-runtime==2.5.0
