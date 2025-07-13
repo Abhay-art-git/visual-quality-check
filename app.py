@@ -3,13 +3,14 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 from datetime import datetime
-import tflite_runtime.interpreter as tflite
+import tensorflow as tf
+
 
 
 # ----------------- Load TFLite Model -----------------
 @st.cache_resource
 def load_my_model():
-    interpreter = tflite.Interpreter(model_path="saved_model/visual_check.tflite")
+    interpreter = tf.lite.Interpreter(model_path="saved_model/visual_check.tflite")
     interpreter.allocate_tensors()
     return interpreter
 
