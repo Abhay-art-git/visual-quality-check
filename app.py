@@ -9,9 +9,10 @@ import tflite_runtime.interpreter as tflite
 # ----------------- Load TFLite Model -----------------
 @st.cache_resource
 def load_my_model():
-    interpreter = tf.lite.Interpreter(model_path="../saved_model/visual_check.tflite")
+    interpreter = tflite.Interpreter(model_path="saved_model/visual_check.tflite")
     interpreter.allocate_tensors()
     return interpreter
+
 
 interpreter = load_my_model()
 input_details = interpreter.get_input_details()
