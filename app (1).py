@@ -13,7 +13,7 @@ import gdown  # Add this at the top with your other imports
 
 @st.cache_resource
 def load_model_from_drive():
-    file_id = "1yXUpk5GOi1JZnA_6lotHAN0zWdgL2Goj"
+    file_id = "1FpZ23NQLGjxj6CwgE6_NlUbaCwoat7a-"
     url = f"https://drive.google.com/uc?id={file_id}"
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
