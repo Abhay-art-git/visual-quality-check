@@ -3,7 +3,8 @@ import numpy as np
 import pandas as pd
 from PIL import Image
 from datetime import datetime
-import tensorflow as tf
+import tflite_runtime.interpreter as tflite
+
 
 # ----------------- Load TFLite Model -----------------
 @st.cache_resource
