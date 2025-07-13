@@ -7,22 +7,18 @@ import tensorflow as tf
 from urllib.request import urlopen
 import tempfile
 import h5py  # Required to load .h5 files
+import gdown  # Add this at the top with your other imports
 
 # ------------------ LOAD MODEL FROM GOOGLE DRIVE ------------------
 
 @st.cache_resource
 def load_model_from_drive():
     file_id = "1yXUpk5GOi1JZnA_6lotHAN0zWdgL2Goj"
-    file_url = f"https://drive.google.com/uc?export=download&id={file_id}"
+    url = f"https://drive.google.com/uc?id={file_id}"
 
-    try:
-        with urlopen(file_url) as response:
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
-                tmp_file.write(response.read())
-                return tf.keras.models.load_model(tmp_file.name)
-    except Exception as e:
-        st.error(f"❌ Failed to load model from Google Drive: {e}")
-        return None
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".h5") as tmp_file:
+        gdown.download(url, tmp_file.name, quiet=False)
+        return tf.keras.models.load_model(tmp_file.name)
 
 model = load_model_from_drive()
 
