@@ -3,5 +3,5 @@ numpy
 pandas
 pillow
 tensorflow==2.9.1
-
+tflite-runtime
 
